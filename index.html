@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Upload App</title>
+</head>
+<body>
+
+<h1>Image Upload + Preview</h1>
+
+<form action="/upload"
+      method="POST"
+      enctype="multipart/form-data">
+
+    <input type="file" name="image" required>
+
+    <button type="submit">
+        Upload
+    </button>
+
+</form>
+
+<hr>
+
+<h2>Uploaded Images</h2>
+
+{% for image in images %}
+
+    <div style="margin-bottom:20px;">
+
+        <img
+            src="{{ url_for('static', filename='uploads/' + image) }}"
+            width="250"
+        >
+
+        <p>{{ image }}</p>
+
+    </div>
+
+{% endfor %}
+
+</body>
+</html>
